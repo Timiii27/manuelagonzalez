@@ -2,6 +2,15 @@
 
 import { useState, useEffect } from "react";
 
+// Vercel Blob storage configuration
+const BLOB_STORAGE_URL =
+  "https://yflidv3jyhzviklc.public.blob.vercel-storage.com";
+
+// Helper function to get blob URL for images
+const getBlobUrl = (imageName: string): string => {
+  return `${BLOB_STORAGE_URL}/${imageName}`;
+};
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,7 +39,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src="/images/navLogo.png"
+              src={getBlobUrl("navLogo.png")}
               alt="Manuela González Logo"
               className="w-16 h-16 object-contain"
             />

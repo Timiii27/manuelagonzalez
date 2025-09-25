@@ -4,6 +4,15 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
+// Vercel Blob storage configuration
+const BLOB_STORAGE_URL =
+  "https://yflidv3jyhzviklc.public.blob.vercel-storage.com";
+
+// Helper function to get blob URL for images
+const getBlobUrl = (imageName: string): string => {
+  return `${BLOB_STORAGE_URL}/${imageName}`;
+};
+
 interface Work {
   id: string;
   title: string;
@@ -22,7 +31,7 @@ const works: Work[] = [
     technique: "Fotolitografía iluminada y cosida, china collé",
     paperSize: "78 x 50 cm",
     matrixSize: "64 x 50 cm",
-    image: "dondeEstas25.JPG",
+    image: "dondeEstas25.jpg",
   },
   {
     id: "2",
@@ -31,7 +40,7 @@ const works: Work[] = [
     technique: "Fotolitografía, técnicas aditivas y china collé",
     paperSize: "28 x 38 cm",
     matrixSize: "18 x 28 cm",
-    image: "Union25.JPG",
+    image: "Union25.jpg",
   },
   {
     id: "3",
@@ -235,7 +244,7 @@ export default function WorkSection() {
                 <div className="aspect-square relative overflow-hidden bg-gradient-to-br from-soft-blue/20 to-light-sage/20">
                   {work.image ? (
                     <Image
-                      src={`/images/${work.image}`}
+                      src={getBlobUrl(work.image)}
                       alt={`${work.title} (${work.year})`}
                       fill
                       className="object-cover"
@@ -308,7 +317,7 @@ export default function WorkSection() {
                   <div className="aspect-square relative bg-white rounded-lg overflow-hidden">
                     {selectedWork?.image ? (
                       <Image
-                        src={`/images/${selectedWork.image}`}
+                        src={getBlobUrl(selectedWork.image)}
                         alt={`${selectedWork.title} (${selectedWork.year})`}
                         fill
                         className="object-contain"

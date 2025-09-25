@@ -2,6 +2,15 @@
 
 import { motion } from "framer-motion";
 
+// Vercel Blob storage configuration
+const BLOB_STORAGE_URL =
+  "https://yflidv3jyhzviklc.public.blob.vercel-storage.com";
+
+// Helper function to get blob URL for images
+const getBlobUrl = (imageName: string): string => {
+  return `${BLOB_STORAGE_URL}/${imageName}`;
+};
+
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -9,12 +18,11 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/Puente24.jpg')`,
+          backgroundImage: `url('${getBlobUrl("Puente24.jpg")}')`,
         }}
       >
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-soft-blue/60 to-light-sage/60"></div>
-
       </div>
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">

@@ -4,7 +4,7 @@ const nextConfig = {
         appDir: true,
     },
     images: {
-        domains: ['images.unsplash.com'],
+        domains: ['images.unsplash.com', 'yflidv3jyhzviklc.public.blob.vercel-storage.com'],
     },
 }
 

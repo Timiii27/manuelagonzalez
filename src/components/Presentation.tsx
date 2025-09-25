@@ -2,6 +2,15 @@
 
 import { motion } from "framer-motion";
 
+// Vercel Blob storage configuration
+const BLOB_STORAGE_URL =
+  "https://yflidv3jyhzviklc.public.blob.vercel-storage.com";
+
+// Helper function to get blob URL for images
+const getBlobUrl = (imageName: string): string => {
+  return `${BLOB_STORAGE_URL}/${imageName}`;
+};
+
 export default function Presentation() {
   return (
     <section
@@ -80,7 +89,7 @@ export default function Presentation() {
               <img
                 alt="Manuela González - Artista"
                 className="w-full h-full object-cover"
-                src="/images/manuelaGonzalez.jpg"
+                src={getBlobUrl("manuelaGonzalez.jpg")}
               />
             </div>
           </motion.div>

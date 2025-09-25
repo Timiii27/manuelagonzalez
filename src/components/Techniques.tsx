@@ -3,6 +3,15 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+// Vercel Blob storage configuration
+const BLOB_STORAGE_URL =
+  "https://yflidv3jyhzviklc.public.blob.vercel-storage.com";
+
+// Helper function to get blob URL for videos
+const getBlobUrl = (videoName: string): string => {
+  return `${BLOB_STORAGE_URL}/${videoName}`;
+};
+
 interface Technique {
   id: string;
   video: string;
@@ -11,24 +20,23 @@ interface Technique {
 const techniques: Technique[] = [
   {
     id: "1",
-
-    video: "/videos/video1.mp4",
+    video: "video1.mp4",
   },
   {
     id: "2",
-    video: "/videos/video2.mp4",
+    video: "video2.mp4",
   },
   {
     id: "3",
-    video: "/videos/video3.mp4",
+    video: "video3.mp4",
   },
   {
     id: "4",
-    video: "/videos/video4.mp4",
+    video: "video4.mp4",
   },
   {
     id: "5",
-    video: "/videos/video5.mp4",
+    video: "video5.mp4",
   },
 ];
 
@@ -88,8 +96,14 @@ export default function Techniques() {
                     autoPlay={playingVideo === technique.id}
                     muted={playingVideo === technique.id}
                   >
-                    <source src={technique.video} type="video/mp4" />
-                    <source src={technique.video} type="video/quicktime" />
+                    <source
+                      src={getBlobUrl(technique.video)}
+                      type="video/mp4"
+                    />
+                    <source
+                      src={getBlobUrl(technique.video)}
+                      type="video/quicktime"
+                    />
                     Tu navegador no soporta el elemento de video.
                   </video>
 
